@@ -11,7 +11,7 @@ interface BabyNameData {
 function App() {
 
   function makeBabyNameElement(nameData: BabyNameData) {
-    return <div>{nameData.name}</div>
+    return <div className={"babyName " + nameData.sex}>{nameData.name}</div>
   }
 
   return (

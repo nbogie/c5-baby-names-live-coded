@@ -1,0 +1,23 @@
+body {}
+
+.babyName {
+    width: 100px;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 10px;
+}
+
+.babyName.m {
+    background: yellow;
+}
+
+.babyName.f {
+    background: orange;
+}
+
+.mainList {
+    border: red 20px dashed;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
