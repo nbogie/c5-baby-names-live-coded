@@ -1,14 +1,19 @@
 import React, { useState } from 'react';
 import './App.css';
 import babyNamesDataUnsorted from "./babyNamesData.json";
+import { findMatchingBabyNames } from './searchFunctions';
 import { sortBabyNames } from './sortFunctions';
 import { BabyNameData } from './types';
 
 
 function App() {
   console.log("APP FUNCTION CALLED - will re-render", new Date())
-  const sortedBabyNames = sortBabyNames(babyNamesDataUnsorted);
+  const allSortedBabyNames = sortBabyNames(babyNamesDataUnsorted);
   const [searchTerm, setSearchTerm] = useState("");
+
+  console.log("MAKING A LIST OF FILTERED NAMES BASED ON ", searchTerm)
+  //generate filteredBabyNames from sortedBabyNames and searchTerm
+  const filteredNames = findMatchingBabyNames(allSortedBabyNames, searchTerm);
 
   //@ts-ignore
   function handleChangeToInputText(event) {
@@ -24,9 +29,9 @@ function App() {
       <button onClick={() => setSearchTerm("")}>CLEAR SEARCH</button>
       <hr />
 
-      There are {sortedBabyNames.length} names.
+      There are {filteredNames.length} names.
       <div className="mainList" >
-        {sortedBabyNames.map(makeBabyNameElement)}
+        {filteredNames.map(makeBabyNameElement)}
       </div >
     </div >
   );
@@ -43,4 +48,6 @@ function makeBabyNameElement(nameData: BabyNameData) {
     className={"babyName " + nameData.sex}>{nameData.name}
   </div>
 }
+
+
 
