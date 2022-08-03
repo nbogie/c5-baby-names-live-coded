@@ -16,7 +16,14 @@ body {}
 }
 
 .mainList {
-    border: red 20px dashed;
+    border: red 5px dashed;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.favouritesList {
+    border: blue 5px dashed;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
