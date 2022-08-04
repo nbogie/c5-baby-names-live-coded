@@ -75,9 +75,7 @@ function App() {
         {favouriteBabyNames.map(oneNameData => (
           <BabyName
             nameData={oneNameData}
-            clickyFunction={() => {
-              handleRemoveFromFavourites(oneNameData)
-            }}
+            clickyFunction={handleRemoveFromFavourites}
           />
         ))}
       </div>
@@ -90,9 +88,7 @@ function App() {
         {mainBabyNames.map(oneBabyName => (
           <BabyName
             nameData={oneBabyName}
-            clickyFunction={() =>
-              handleAddToFavourites(oneBabyName)
-            }
+            clickyFunction={handleAddToFavourites}
           />
         ))}
       </div >
