@@ -4,7 +4,7 @@ import babyNamesDataUnsorted from "./babyNamesData.json";
 import { findMatchingBabyNames } from './searchFunctions';
 import { sortBabyNames } from './sortFunctions';
 import { BabyNameData } from './types';
-
+import { BabyName } from "./BabyName"
 
 function App() {
 
@@ -97,21 +97,6 @@ function App() {
     </div >
   );
 
-  interface BabyNameProps {
-    nameData: BabyNameData;
-    clickyFunction: any;
-  }
-
-  function BabyName(props: BabyNameProps): JSX.Element {
-    return (
-      <button
-        onClick={() => props.clickyFunction(props.nameData)}
-        className={"babyName " + props.nameData.sex}
-      >
-        {props.nameData.name}
-      </button >
-    )
-  }
 
 }
 
