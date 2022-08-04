@@ -1,4 +1,7 @@
-body {}
+body {
+    max-width: 1000px;
+    margin: 0 auto;
+}
 
 .babyName {
     width: 100px;
