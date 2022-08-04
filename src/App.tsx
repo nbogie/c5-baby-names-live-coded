@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import './App.css';
+import { BabyNameList } from './BabyNameList';
 import babyNamesDataUnsorted from "./babyNamesData.json";
+import { SearchBar } from './SearchBar';
 import { findMatchingBabyNames } from './searchFunctions';
 import { sortBabyNames } from './sortFunctions';
 import { BabyNameData } from './types';
-import { BabyName } from "./BabyName"
-import { SearchBar } from './SearchBar';
 
 function App() {
 
@@ -18,18 +18,14 @@ function App() {
 
   console.log("MAKING A LIST OF FILTERED NAMES BASED ON ", searchTerm)
 
-  //generate filteredBabyNames to show, based on the following:
-  //  sortedBabyNames - those that don't match a search - those that are in favourites
 
   function isNotInFavourites(oneBabyName: BabyNameData): boolean {
     return (!favouriteBabyNames.includes(oneBabyName));
   }
 
-  // write a function isInArray(arr, target)
-  // which returns true if the reference "target" references an object in the arr, else returns false
-  // 
 
-
+  //generate filteredBabyNames to show, based on the following:
+  //  sortedBabyNames - those that don't match a search - those that are in favourites
   const namesMatchingSearch = findMatchingBabyNames(allSortedBabyNames, searchTerm);
   const mainBabyNames = namesMatchingSearch.filter(isNotInFavourites);
 
@@ -59,30 +55,12 @@ function App() {
     <div className="App">
       <SearchBar searchTerm={searchTerm} onChange={setSearchTerm} />
 
-
       <h2>Favourites List</h2>
-      <div className="favouritesList">
-        {favouriteBabyNames.map(oneBabyName => (
-          <BabyName
-            key={oneBabyName.id}
-            nameData={oneBabyName}
-            clickyFunction={handleRemoveFromFavourites}
-          />
-        ))}
-      </div>
-
+      <BabyNameList names={favouriteBabyNames} onClick={handleRemoveFromFavourites} className="favouritesList" />
 
       <h2>Main List</h2>
       There are {mainBabyNames.length} names.
-      <div className="mainList" >
-        {mainBabyNames.map(oneBabyName => (
-          <BabyName
-            key={oneBabyName.id}
-            nameData={oneBabyName}
-            clickyFunction={handleAddToFavourites}
-          />
-        ))}
-      </div >
+      <BabyNameList names={mainBabyNames} onClick={handleAddToFavourites} className="mainList" />
     </div >
   );
 
@@ -90,10 +68,4 @@ function App() {
 }
 
 
-
-
 export default App;
-
-
-
-
