@@ -77,12 +77,15 @@ function App() {
 
 
   function makeBabyNameElement(nameData: BabyNameData) {
-    return <button
-      key={nameData.id}
-      onClick={() => handleAddToFavourites(nameData)}
-      className={"babyName " + nameData.sex}>
-      {nameData.name}
-    </button>
+    return (
+      <button
+        key={nameData.id}
+        onClick={() => handleAddToFavourites(nameData)}
+        className={"babyName " + nameData.sex}
+      >
+        {nameData.name}
+      </button>
+    )
   }
 
 }
