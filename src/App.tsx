@@ -5,6 +5,7 @@ import { findMatchingBabyNames } from './searchFunctions';
 import { sortBabyNames } from './sortFunctions';
 import { BabyNameData } from './types';
 import { BabyName } from "./BabyName"
+import { SearchBar } from './SearchBar';
 
 function App() {
 
@@ -32,13 +33,6 @@ function App() {
   const namesMatchingSearch = findMatchingBabyNames(allSortedBabyNames, searchTerm);
   const mainBabyNames = namesMatchingSearch.filter(isNotInFavourites);
 
-  //@ts-ignore
-  function handleChangeToInputText(event) {
-    console.log("handling change: event.target.value is >>" + event.target.value + "<<")
-    setSearchTerm(event.target.value);
-    console.log("after calling setSearchTerm, searchTerm is", searchTerm, "e.t.v is", event.target.value)
-  }
-
   function handleAddToFavourites(oneNameData: BabyNameData) {
     // add oneNameData to favouriteBabyNames (managed state)
     //HOW?    
@@ -63,16 +57,7 @@ function App() {
 
   return (
     <div className="App">
-      Search term is currently: {searchTerm}<hr />
-      <input
-        type="text"
-        onChange={handleChangeToInputText}
-        value={searchTerm}
-        placeholder={"search term..."}
-      />
-
-      <button onClick={() => setSearchTerm("")}>CLEAR SEARCH</button>
-      <hr />
+      <SearchBar searchTerm={searchTerm} onChange={setSearchTerm} />
 
 
       <h2>Favourites List</h2>
@@ -103,6 +88,8 @@ function App() {
 
 
 }
+
+
 
 
 export default App;
