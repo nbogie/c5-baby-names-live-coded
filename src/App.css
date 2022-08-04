@@ -18,16 +18,18 @@ body {
     background: orange;
 }
 
-.mainList {
-    border: red 5px dashed;
+.babyNameList {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
 }
 
-.favouritesList {
+.mainBabyNameList {
+    border: red 5px dashed;
+
+}
+
+.favouriteBabyNameList {
     border: blue 5px dashed;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+
 }

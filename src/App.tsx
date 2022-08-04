@@ -49,11 +49,11 @@ function App() {
       <SearchBar searchTerm={searchTerm} onChange={setSearchTerm} />
 
       <h2>Favourites List</h2>
-      <BabyNameList names={favouriteBabyNames} onClick={handleRemoveFromFavourites} className="favouritesList" />
+      <BabyNameList names={favouriteBabyNames} onClick={handleRemoveFromFavourites} className="favouriteBabyNameList" />
 
       <h2>Main List</h2>
       There are {mainBabyNames.length} names.
-      <BabyNameList names={mainBabyNames} onClick={handleAddToFavourites} className="mainList" />
+      <BabyNameList names={mainBabyNames} onClick={handleAddToFavourites} className="mainBabyNameList" />
     </div >
   );
 }

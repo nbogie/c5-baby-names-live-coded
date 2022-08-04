@@ -15,7 +15,7 @@ interface BabyNameListProps {
 
 export function BabyNameList(props: BabyNameListProps) {
   return (
-    <div className={props.className}>
+    <div className={"babyNameList " + props.className}>
       {props.names.map((oneBabyName) => (
         <BabyName
           key={oneBabyName.id}
