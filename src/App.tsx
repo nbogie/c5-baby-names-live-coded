@@ -49,6 +49,18 @@ function App() {
     setFavouriteBabyNames(newFavouriteBabyNames);
   }
 
+  function handleRemoveFromFavourites(targetNameData: BabyNameData): void {
+    //pseudocode
+    //1. newFavourites = prepare new list of favourite baby names - a copy but missing the targetNameData one
+
+    function doesNotMatchTarget(candidate: BabyNameData) {
+      return !(candidate.name === targetNameData.name)
+    }
+    const newFavourites: BabyNameData[] = favouriteBabyNames.filter(doesNotMatchTarget);
+    //2. call setFavouriteBabyNames with the newFavourites
+    setFavouriteBabyNames(newFavourites);
+  }
+
   return (
     <div className="App">
       Search term is currently: {searchTerm}<hr />
@@ -60,7 +72,14 @@ function App() {
       <h2>Favourites List</h2>
       HERE
       <div className="favouritesList">
-        {favouriteBabyNames.map(makeBabyNameElement)}
+        {favouriteBabyNames.map(oneNameData => (
+          <BabyName
+            nameData={oneNameData}
+            clickyFunction={() => {
+              handleRemoveFromFavourites(oneNameData)
+            }}
+          />
+        ))}
       </div>
       LOOK UP
 
@@ -68,23 +87,32 @@ function App() {
       <h2>Main List</h2>
       There are {mainBabyNames.length} names.
       <div className="mainList" >
-        {mainBabyNames.map(makeBabyNameElement)}
+        {mainBabyNames.map(oneBabyName => (
+          <BabyName
+            nameData={oneBabyName}
+            clickyFunction={() =>
+              handleAddToFavourites(oneBabyName)
+            }
+          />
+        ))}
       </div >
     </div >
   );
 
+  interface BabyNameProps {
+    nameData: BabyNameData;
+    clickyFunction: any;
+  }
 
-
-
-  function makeBabyNameElement(nameData: BabyNameData) {
+  function BabyName(props: BabyNameProps): JSX.Element {
     return (
       <button
-        key={nameData.id}
-        onClick={() => handleAddToFavourites(nameData)}
-        className={"babyName " + nameData.sex}
+        key={props.nameData.id}
+        onClick={() => props.clickyFunction(props.nameData)}
+        className={"babyName " + props.nameData.sex}
       >
-        {nameData.name}
-      </button>
+        {props.nameData.name}
+      </button >
     )
   }
 
