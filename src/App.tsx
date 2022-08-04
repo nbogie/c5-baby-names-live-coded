@@ -64,13 +64,18 @@ function App() {
   return (
     <div className="App">
       Search term is currently: {searchTerm}<hr />
-      <input type="text" onChange={handleChangeToInputText} value={searchTerm} placeholder={"search term..."} />
+      <input
+        type="text"
+        onChange={handleChangeToInputText}
+        value={searchTerm}
+        placeholder={"search term..."}
+      />
+
       <button onClick={() => setSearchTerm("")}>CLEAR SEARCH</button>
       <hr />
 
 
       <h2>Favourites List</h2>
-      HERE
       <div className="favouritesList">
         {favouriteBabyNames.map(oneBabyName => (
           <BabyName
@@ -80,7 +85,6 @@ function App() {
           />
         ))}
       </div>
-      LOOK UP
 
 
       <h2>Main List</h2>
