@@ -1,4 +1,4 @@
-import { BabyNameData } from "./types";
+import { BabyNameData } from "../types";
 
 export function findMatchingBabyNames(
   namesData: BabyNameData[],

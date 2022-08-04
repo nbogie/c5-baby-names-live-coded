@@ -1,5 +1,5 @@
 import { BabyName } from "./BabyName";
-import { BabyNameData } from "./types";
+import { BabyNameData } from "../types";
 
 interface BabyNameListProps {
   /** The baby names to show! zero or more.*/

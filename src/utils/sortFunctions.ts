@@ -1,4 +1,4 @@
-import { BabyNameData } from "./types";
+import { BabyNameData } from "../types";
 
 export function sortBabyNames(nameDataArray: BabyNameData[]): BabyNameData[] {
   return [...nameDataArray].sort(compareTwoBabyDataObjects);

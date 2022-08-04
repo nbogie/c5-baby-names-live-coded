@@ -1,11 +1,11 @@
 import { useState } from 'react';
+import babyNamesDataUnsorted from "../data/babyNamesData.json";
+import { BabyNameData } from '../types';
+import { findMatchingBabyNames } from '../utils/searchFunctions';
+import { sortBabyNames } from '../utils/sortFunctions';
 import './App.css';
 import { BabyNameList } from './BabyNameList';
-import babyNamesDataUnsorted from "./data/babyNamesData.json";
 import { SearchBar } from './SearchBar';
-import { findMatchingBabyNames } from './searchFunctions';
-import { sortBabyNames } from './sortFunctions';
-import { BabyNameData } from './types';
 
 function App() {
 
