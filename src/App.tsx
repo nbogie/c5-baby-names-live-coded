@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './App.css';
 import { BabyNameList } from './BabyNameList';
-import babyNamesDataUnsorted from "./babyNamesData.json";
+import babyNamesDataUnsorted from "./data/babyNamesData.json";
 import { SearchBar } from './SearchBar';
 import { findMatchingBabyNames } from './searchFunctions';
 import { sortBabyNames } from './sortFunctions';
