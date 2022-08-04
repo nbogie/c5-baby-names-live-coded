@@ -9,45 +9,38 @@ import { BabyNameData } from './types';
 
 function App() {
 
-  console.log("APP FUNCTION CALLED - will re-render", new Date())
-  const allSortedBabyNames = sortBabyNames(babyNamesDataUnsorted);
-
   const [searchTerm, setSearchTerm] = useState("");
 
   const [favouriteBabyNames, setFavouriteBabyNames] = useState<BabyNameData[]>([]);
 
-  console.log("MAKING A LIST OF FILTERED NAMES BASED ON ", searchTerm)
-
-
-  function isNotInFavourites(oneBabyName: BabyNameData): boolean {
-    return (!favouriteBabyNames.includes(oneBabyName));
-  }
+  const allSortedBabyNames = sortBabyNames(babyNamesDataUnsorted);
 
 
   //generate filteredBabyNames to show, based on the following:
   //  sortedBabyNames - those that don't match a search - those that are in favourites
   const namesMatchingSearch = findMatchingBabyNames(allSortedBabyNames, searchTerm);
   const mainBabyNames = namesMatchingSearch.filter(isNotInFavourites);
+  function isNotInFavourites(oneBabyName: BabyNameData): boolean {
+    return (!favouriteBabyNames.includes(oneBabyName));
+  }
 
   function handleAddToFavourites(oneNameData: BabyNameData) {
-    // add oneNameData to favouriteBabyNames (managed state)
-    //HOW?    
+    // Add oneNameData to our favourites (which are in react-managed state)
     // step 1: newFavouriteBabyNames = make a copy of favouriteBabyNames    
     // step 2: add oneNameData to newFavouriteBabyNames 
-    // step 3: call the setter for favouriteBabyNames (setFavouriteBabyNames)    
     const newFavouriteBabyNames = [...favouriteBabyNames, oneNameData];
+    // step 3: ...
     setFavouriteBabyNames(newFavouriteBabyNames);
   }
 
   function handleRemoveFromFavourites(targetNameData: BabyNameData): void {
-    //pseudocode
-    //1. newFavourites = prepare new list of favourite baby names - a copy but missing the targetNameData one
-
     function doesNotMatchTarget(candidate: BabyNameData) {
-      return !(candidate.name === targetNameData.name)
+      return candidate.name !== targetNameData.name;
     }
+    //STEP 1. newFavourites = prepare new, copied list of 
+    //favourite baby names but MISSING the targetNameData one
     const newFavourites: BabyNameData[] = favouriteBabyNames.filter(doesNotMatchTarget);
-    //2. call setFavouriteBabyNames with the newFavourites
+    //STEP 2....
     setFavouriteBabyNames(newFavourites);
   }
 
@@ -63,8 +56,6 @@ function App() {
       <BabyNameList names={mainBabyNames} onClick={handleAddToFavourites} className="mainList" />
     </div >
   );
-
-
 }
 
 
