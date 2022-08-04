@@ -72,9 +72,10 @@ function App() {
       <h2>Favourites List</h2>
       HERE
       <div className="favouritesList">
-        {favouriteBabyNames.map(oneNameData => (
+        {favouriteBabyNames.map(oneBabyName => (
           <BabyName
-            nameData={oneNameData}
+            key={oneBabyName.id}
+            nameData={oneBabyName}
             clickyFunction={handleRemoveFromFavourites}
           />
         ))}
@@ -87,6 +88,7 @@ function App() {
       <div className="mainList" >
         {mainBabyNames.map(oneBabyName => (
           <BabyName
+            key={oneBabyName.id}
             nameData={oneBabyName}
             clickyFunction={handleAddToFavourites}
           />
@@ -103,7 +105,6 @@ function App() {
   function BabyName(props: BabyNameProps): JSX.Element {
     return (
       <button
-        key={props.nameData.id}
         onClick={() => props.clickyFunction(props.nameData)}
         className={"babyName " + props.nameData.sex}
       >
